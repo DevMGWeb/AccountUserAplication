@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mig_2\\source\\repos\\netcore\\CursoWebsite\\CursoWebsite.csproj",
+      "projectUniqueName": "C:\\Users\\mig_2\\source\\repos\\CursoWebsite\\CursoWebsite.csproj",
       "projectName": "CursoWebsite",
-      "projectPath": "C:\\Users\\mig_2\\source\\repos\\netcore\\CursoWebsite\\CursoWebsite.csproj",
+      "projectPath": "C:\\Users\\mig_2\\source\\repos\\CursoWebsite\\CursoWebsite.csproj",
       "packagesPath": "C:\\Users\\mig_2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mig_2\\source\\repos\\netcore\\CursoWebsite\\obj\\",
+      "outputPath": "C:\\Users\\mig_2\\source\\repos\\CursoWebsite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
