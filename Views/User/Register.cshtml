@@ -1,0 +1,78 @@
+﻿@model CursoWebsite.Models.UserAccount
+
+@{
+    ViewData["Title"] = "Registrar";
+}
+
+<h1>@ViewData["Title"]</h1>
+<h4>Cuenta de Usuario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register" asp-antiforgery="true">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Back to Home</a>
+</div>
+<partial name="_ValidationScriptsPartial" />
+<script>
+
+    $.validator.unobtrusive.adapters.add("memberpasswordvalidation", ['invalidreason'], function (options) {
+        options.rules['memberpasswordvalidation'] = options.params;
+    });
+
+    $.validator.addMethod("memberpasswordvalidation",
+        function (value, element, params) { // performs the actual validation
+
+            const minimunLengthPass = 8
+            const lowerCase = true;
+            const upperCase = true;
+            const digistNumeric = true;
+            const specialCharacter = false;
+
+            var result = false;
+            var pwd = String(value);
+            if (pwd && pwd.length >= minimunLengthPass) { // Must be at least 8 characters long
+                if (pwd.match(/[^a-zA-Z0-9]/)) { // Must have at least 1 symbol character
+                    result = true;
+                    params['invalidreason'] = '';
+                } else {
+                    params['invalidreason'] = 'Your new password must contain at least 1 symbol character.';
+                }
+            } else {
+                params['invalidreason'] = 'Your new password must be at least 8 characters long.';
+            }
+            return result;
+        },
+        function (params,elem) { // returns the invalidreason param as the message
+            return params['invalidreason'];
+        }
+    );
+</script>

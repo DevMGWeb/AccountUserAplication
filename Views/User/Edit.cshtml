@@ -1,0 +1,122 @@
+﻿@model CursoWebsite.ViewModels.EditAccount
+@{
+    Layout = "_MainLayout";
+}
+
+<!------ Include the above in your HEAD tag ---------->
+<form class="container" asp-action="Edit" asp-antiforgery="true" enctype="multipart/form-data">
+    <fieldset>
+        <div class="text-center">
+
+            @if (Model.Files.Count > 0)
+            {
+                @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
+                {
+                    <img src='@Url.Action("GetUserImageFile", "Manager")'
+                        class="avatar img-circle img-thumbnail"
+                        alt="avatar" id="avatar" 
+                        style="margin-bottom:15px">
+                    <br />
+                }
+            }
+            else
+            {
+                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+                     class="avatar img-circle img-thumbnail"
+                     alt="avatar" id="avatar">
+                <h6>Upload a different photo...</h6>
+            }
+
+            <input id="upload" name="upload" type="file" class="text-center center-block file-upload" hidden="">
+            <button class="btn btn-primary btn-group-lg" type="button" onclick="upload.click()">
+                SUBIR IMAGEN <span class="fa fa-upload"></span>
+            </button>
+        </div>
+        <br>
+        <!-- Form Name -->
+        <!-- Text input-->
+        <div class="form-group">
+            <div class="row">
+                <label class="col-md-6 control-label" for="Name">Nombre</label>
+                <label class="col-md-6 control-label" for="Correo">Correo</label>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input id="Name" asp-for="Name"
+                           type="text" placeholder="Nombre del usuario"
+                           class="form-control input-md">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <input id="Correo" asp-for="Email"
+                           type="text" placeholder="Correo del usuario"
+                           class="form-control input-md">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <label class="col-md-6 control-label" for="Usuario">Usuario</label>
+                <label class="col-md-6 control-label" for="Telefono">Telefono</label>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <input id="Usuario" asp-for="Username"
+                           type="text" placeholder="Username o nickname"
+                           class="form-control input-md">
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <input id="Telefono" asp-for="Phone"
+                           type="text" placeholder="Telefono"
+                           class="form-control input-md">
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <label class="col-md-6 control-label" asp-for="Rol">Nível</label>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.DropDownList("Rol",
+                         Html.GetEnumSelectList<Rol>(),
+                         "SELECCIONAR UN ROL",
+                         new { @class = "form-control" }
+                     )
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <!-- Button (Double) -->
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <button id="idConfirmar" type="submit" class="btn btn-primary">Actualizar</button>
+                        <a id="idCancelar" class="btn btn-danger" asp-controller="Main" asp-action="">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<script>
+    function mostrarImagen() {
+        var imagenSource = event.target.result;
+        document.querySelector("#avatar").src = imagenSource;
+    }
+
+    function procesarImagen() {
+        var imagen = event.target.files[0];
+        var lector = new FileReader();
+        lector.addEventListener('load', mostrarImagen, false);
+        lector.readAsDataURL(imagen);
+    }
+
+    document.querySelector("#upload").addEventListener('change', procesarImagen, false);
+</script>
+
+
