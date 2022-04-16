@@ -9,6 +9,7 @@ C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\ref\CursoWebsite.dll
 C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\CursoWebsite.pdb
 C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\CursoWebsite.Views.dll
 C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\CursoWebsite.Views.pdb
+C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\AutoMapper.dll
 C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\Humanizer.dll
 C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\System.Web.Mvc.dll
 C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\System.Web.Razor.dll
@@ -117,6 +118,7 @@ C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\Shared\Err
 C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\Shared\_MainLayout.cshtml.g.cs
 C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\User\Edit.cshtml.g.cs
 C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\User\Login.cshtml.g.cs
 C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\User\Register.cshtml.g.cs
 C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -129,6 +131,3 @@ C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\CursoWebsite.dll
 C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\ref\CursoWebsite.dll
 C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\CursoWebsite.pdb
 C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\CursoWebsite.genruntimeconfig.cache
-C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\CursoWebsite.csprojAssemblyReference.cache
-C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\User\Edit.cshtml.g.cs
-C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\AutoMapper.dll
