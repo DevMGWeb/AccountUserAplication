@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "VHl/cO37W5uTpTZ4zMgy0iB4EabSBoXgZybcUlHMDyn9kfZLCgk/9eHd/Ya4lck7ZzaRIXx8kT/ulZU2Kqn2GQ==",
+  "dgSpecHash": "cl85YKYksAHDLqGgWtdDUzebJsHiMC+jrstRoO0dZfkXSGsgPoz9t0pNHFqJry/Ze9WTK/GptGpPZf1+BWBb7w==",
   "success": true,
   "projectFilePath": "C:\\Users\\mig_2\\source\\repos\\CursoWebsite\\CursoWebsite.csproj",
   "expectedPackageFiles": [
@@ -128,7 +128,8 @@
     "C:\\Users\\mig_2\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\mig_2\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\mig_2\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\mig_2\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\mig_2\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\mig_2\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.16\\microsoft.netcore.app.host.win-x64.5.0.16.nupkg.sha512"
   ],
   "logs": [
     {
