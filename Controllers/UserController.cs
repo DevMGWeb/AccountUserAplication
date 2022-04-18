@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 
 namespace CursoWebsite.Controllers
 {
@@ -116,17 +117,6 @@ namespace CursoWebsite.Controllers
 
             EditAccount editAccount = mapper.Map<EditAccount>(model);
 
-            //Cambie esta por funcionalidad AutoMapper 
-            //ViewModels.EditAccount editAccount = new EditAccount()
-            //{
-            //    Username = model.Username,
-            //    Name = model.Name,
-            //    Email = model.Email,
-            //    Phone = model.Phone,
-            //    Rol = model.Rol,
-            //    Files = model.Files,
-            //};
-
             return View(editAccount);
         }
 
@@ -157,6 +147,47 @@ namespace CursoWebsite.Controllers
             }
 
             return View(account);
+        }
+
+        [Authorize]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangePasswordAsync(PasswordViewModels models)
+        {
+            if (ModelState.IsValid)
+            {
+                string Id = Helpers.Session.GetNameIdentifier(User);
+                var user = context.UserAccounts.FirstOrDefault(x => x.Id == Id);
+                if (user == null)
+                {
+                    return RedirectToAction("Login");
+                }
+
+                UserServices.ValidateChangePassword(user, models.PasswordActual, models.Password);
+
+                if (!UserServices.Validated)
+                {
+                    foreach (var error in UserServices.Errores)
+                    {
+                        ModelState.AddModelError(string.Empty, error);
+                    }
+
+                    return View(models);
+                }
+
+                user.Password = Encrypt.GetSHA256(models.Password); 
+                context.Update(user);
+                await context.SaveChangesAsync();
+
+                return View("ChangePasswordConfirmation");
+            }
+
+            return View(models);
         }
     }
 }
