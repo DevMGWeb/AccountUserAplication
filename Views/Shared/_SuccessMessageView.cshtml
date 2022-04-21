@@ -1,0 +1,10 @@
+﻿@{
+    if (ViewBag.SuccessMessage != null && ViewBag.SuccessMessage != string.Empty)
+    {
+        <div class="alert alert-success">
+            <h4>
+                @ViewBag.SuccessMessage
+            </h4>
+        </div>
+    }
+}

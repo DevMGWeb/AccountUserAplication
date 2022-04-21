@@ -46,6 +46,8 @@ namespace CursoWebsite.Models
         [Phone(ErrorMessage = "Format Incorrect")]
         public string Phone { get; set; }
 
+        public string Token_Recovery { get; set; }
+
         public Rol Rol { get; set; }
 
         public virtual ICollection<File> Files { get; set; }

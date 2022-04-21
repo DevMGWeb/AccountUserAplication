@@ -22,6 +22,7 @@ namespace CursoWebsite.Controllers
     {
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
+        private string urlDomain = "https://localhost:44345";
 
         public UserController(ApplicationDbContext context, IMapper mapper)
         {
@@ -65,7 +66,7 @@ namespace CursoWebsite.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LoginAsync([Bind(include: "Username, Password")] 
-            LoginAccount loginAccount)
+            LoginAccountViewModel loginAccount)
         {
             if (ModelState.IsValid)
             {
@@ -115,14 +116,14 @@ namespace CursoWebsite.Controllers
             var model = context.UserAccounts.Include(f => f.Files)
                 .FirstOrDefault(x => x.Id == Id);
 
-            EditAccount editAccount = mapper.Map<EditAccount>(model);
+            EditAccountViewModel editAccount = mapper.Map<EditAccountViewModel>(model);
 
             return View(editAccount);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(EditAccount account, IFormFile upload)
+        public IActionResult Edit(EditAccountViewModel account, IFormFile upload)
         {
             if (ModelState.IsValid)
             {
@@ -157,7 +158,7 @@ namespace CursoWebsite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ChangePasswordAsync(PasswordViewModels models)
+        public async Task<IActionResult> ChangePasswordAsync(PasswordViewModel models)
         {
             if (ModelState.IsValid)
             {
@@ -188,6 +189,92 @@ namespace CursoWebsite.Controllers
             }
 
             return View(models);
+        }
+
+        [HttpGet]
+        public IActionResult StartRecovery()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult StartRecovery(RecoveryAccountViewModel recovery)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(recovery);
+            }
+
+            string token = Encrypt.GetSHA256(System.Guid.NewGuid().ToString());
+
+            var user = context.UserAccounts
+                .FirstOrDefault(x => x.Email == recovery.Email);
+
+            if(user != null)
+            {
+                user.Token_Recovery = token;
+                context.Entry(user).State = EntityState.Modified;
+                context.SaveChanges();
+
+                //Enviar email
+                UserServices.SendEmailWithToken(urlDomain, user.Email, token);
+            }
+
+            ViewBag.SuccessMessage = "Your token has been sent successfully";
+            return View();
+        }
+
+        [HttpGet]
+        [Route("Access/Recovery")]
+        public IActionResult Recovery(string token)
+        {
+            var recovery = new RecoveryPasswordAccountViewModel();
+            recovery.token_key = token;
+
+            if(token == string.Empty || token == null)
+            {
+                return RedirectToAction("Login");
+            } 
+
+            var oUser = context.UserAccounts.SingleOrDefault(x => x.Token_Recovery == token);
+            if (oUser == null) 
+            {
+                ViewBag.ErrorMessage = "Sorry, Your token has expired";
+                return View("_ErrorMessageView");
+            }
+
+            return View(recovery);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("Access/Recovery")]
+        public IActionResult Recovery(RecoveryPasswordAccountViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                var oUser = context.UserAccounts.SingleOrDefault(x => x.Token_Recovery == model.token_key);
+                if(oUser != null)
+                {
+                    oUser.Password = Encrypt.GetSHA256(model.Password);
+                    oUser.Token_Recovery = null;
+                    context.Entry<UserAccount>(oUser).State = EntityState.Modified;
+                    context.SaveChanges();
+                    ViewBag.SuccessMessage = "Your password has been changed successfully";
+                }
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return View();
         }
     }
 }

@@ -16,7 +16,8 @@ namespace CursoWebsite.Models
                     Id = Guid.NewGuid().ToString(), 
                     Name= "User Invited", 
                     Username = "Guest",
-                    Password = Encrypt.GetSHA256("Guest")
+                    Password = Encrypt.GetSHA256("Guest"),
+                    Email = "mig_24@hotmail.com",
                 },
             };
         }

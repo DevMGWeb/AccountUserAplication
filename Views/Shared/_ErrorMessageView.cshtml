@@ -1,0 +1,10 @@
+﻿@{
+    if (ViewBag.ErrorMessage != null && ViewBag.ErrorMessage != string.Empty)
+    {
+        <div class="alert alert-danger">
+            <h4>
+                @ViewBag.ErrorMessage
+            </h4>
+        </div>
+    }
+}

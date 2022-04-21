@@ -1,0 +1,27 @@
+﻿@model CursoWebsite.ViewModels.RecoveryPasswordAccountViewModel
+@{
+    ViewData["Title"] = "Recovery";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Recovery" asp-antiforgery="true">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <input type="hidden" asp-for="token_key" />
+    <div class="form-group">
+        <label class="control-label" asp-for="Password"></label>
+        <input type="password" asp-for="Password" class="form-control">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label class="control-label" asp-for="Password_Confirm"></label>
+        <input type="password" asp-for="Password_Confirm" class="form-control">
+        <span asp-validation-for="Password_Confirm" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-dark">Save your new password</button>
+    <a class="btn btn-danger" asp-controller="User" asp-action="Login">Go to login</a>
+</form>
+<br />
+<br />
+<partial name="_SuccessMessageView" />
+<partial name="_ValidationScriptsPartial" />

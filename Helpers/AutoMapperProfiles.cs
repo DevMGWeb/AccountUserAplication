@@ -12,14 +12,14 @@ namespace CursoWebsite.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<EditAccount, UserAccount>()
+            CreateMap<EditAccountViewModel, UserAccount>()
                 .ForMember(x => x.Files, options => options.Ignore())
                 .ForMember(x => x.Id, options => options.Ignore());
 
-            CreateMap<UserAccount, EditAccount>();
+            CreateMap<UserAccount, EditAccountViewModel>();
         }
 
-        private ICollection<File> MappaerSoloSiRecibeArchivos(EditAccount editAccount, UserAccount userAccount)
+        private ICollection<File> MappaerSoloSiRecibeArchivos(EditAccountViewModel editAccount, UserAccount userAccount)
         {
             if(editAccount.Files.Count > 0)
             {

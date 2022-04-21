@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CursoWebsite.ViewModels
 {
-    public class PasswordViewModels
+    public class PasswordViewModel
     {
         [PasswordPropertyText]
         [Required(ErrorMessage = "Required {0}")]
@@ -27,7 +27,6 @@ namespace CursoWebsite.ViewModels
         public string Password { get; set; }
 
         [PasswordPropertyText]
-        [NotMapped]
         [DataType(DataType.Password)]
         [Compare("Password",
             ErrorMessage = "Both password must be the same")]

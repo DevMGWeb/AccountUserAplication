@@ -143,3 +143,8 @@ C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\Microsoft.Extensions.O
 C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\mig_2\source\repos\CursoWebsite\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\User\ChangePasswordConfirmation.cshtml.g.cs
+C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\CursoWebsite.csprojAssemblyReference.cache
+C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\User\StartRecovery.cshtml.g.cs
+C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\User\Recovery.cshtml.g.cs
+C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\Shared\_SuccessMessageView.cshtml.g.cs
+C:\Users\mig_2\source\repos\CursoWebsite\obj\Debug\net5.0\Razor\Views\Shared\_ErrorMessageView.cshtml.g.cs

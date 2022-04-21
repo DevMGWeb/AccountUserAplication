@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -49,6 +50,18 @@ namespace CursoWebsite.Services
             }
 
             Validated = true;
+        }
+
+        internal static void SendEmailWithToken(string urlDomain, string EmailDestino, string Token)
+        {
+            string EmailOrigen = "mig_24@hotmail.com";
+            string Contraseña = "Lluvion04";
+            string url = urlDomain+ "/Access/Recovery/?token=" + Token;
+            string asunto = "Recuperacion de Contraseña";
+            string body = @$"<p>Recuperacion de cuenta</p>
+                        <a href='{url}'>Click para recuperar cuenta</a>";
+
+            Helpers.Mail.SendMail(EmailOrigen, Contraseña, EmailDestino, asunto, body);
         }
     }
 }

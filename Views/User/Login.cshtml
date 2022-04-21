@@ -1,4 +1,4 @@
-﻿@model CursoWebsite.ViewModels.LoginAccount
+﻿@model CursoWebsite.ViewModels.LoginAccountViewModel
 
 @{
     ViewData["Title"] = "Acceso Login";
@@ -30,6 +30,8 @@
                 <a class="btn btn-secondary" asp-action="Register">Register</a>
                 <a class="btn btn-danger" asp-controller="Home" asp-action="Index">Go back</a>
             </form>
+            <br />
+            <a asp-controller="User" asp-action="StartRecovery">Don't you remember your password?</a>
         </div>
     </div>
 </div>
